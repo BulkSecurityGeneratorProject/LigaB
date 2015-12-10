@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ligabasquetApp').controller('EquipoDialogController',
-    ['$scope', '$stateParams', '$modalInstance', '$q', 'entity', 'Equipo', 'Entrenador', 'Estadio', 'Jugador', 'Socio', 'Temporada',
-        function($scope, $stateParams, $modalInstance, $q, entity, Equipo, Entrenador, Estadio, Jugador, Socio, Temporada) {
+    ['$scope', '$stateParams', '$modalInstance', '$q', 'entity', 'Equipo', 'Entrenador', 'Estadio', 'Socio', 'Temporada',
+        function($scope, $stateParams, $modalInstance, $q, entity, Equipo, Entrenador, Estadio, Socio, Temporada) {
 
         $scope.equipo = entity;
         $scope.entrenadors = Entrenador.query({filter: 'equipo-is-null'});
@@ -22,15 +22,6 @@ angular.module('ligabasquetApp').controller('EquipoDialogController',
             return Estadio.get({id : $scope.equipo.estadio.id}).$promise;
         }).then(function(estadio) {
             $scope.estadios.push(estadio);
-        });
-        $scope.jugadors = Jugador.query({filter: 'equipo-is-null'});
-        $q.all([$scope.equipo.$promise, $scope.jugadors.$promise]).then(function() {
-            if (!$scope.equipo.jugador.id) {
-                return $q.reject();
-            }
-            return Jugador.get({id : $scope.equipo.jugador.id}).$promise;
-        }).then(function(jugador) {
-            $scope.jugadors.push(jugador);
         });
         $scope.socios = Socio.query();
         $scope.temporadas = Temporada.query();

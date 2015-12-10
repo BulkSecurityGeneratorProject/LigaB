@@ -48,9 +48,6 @@ public class Equipo implements Serializable {
     @OneToOne
     private Estadio estadio;
 
-    @OneToOne
-    private Jugador jugador;
-
     @ManyToMany(mappedBy = "equiposAfiliadoss")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -107,14 +104,6 @@ public class Equipo implements Serializable {
 
     public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
-    }
-
-    public Jugador getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
     }
 
     public Set<Socio> getSociosAfiliadoss() {

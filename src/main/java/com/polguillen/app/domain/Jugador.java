@@ -1,6 +1,5 @@
 package com.polguillen.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.polguillen.app.domain.util.CustomLocalDateSerializer;
@@ -51,9 +50,8 @@ public class Jugador implements Serializable {
     @Column(name = "posicion")
     private String posicion;
 
-    @OneToOne(mappedBy = "jugador")
-    @JsonIgnore
-    private Equipo equipo ;
+    @ManyToOne
+    private Equipo equipo;
 
     public Long getId() {
         return id;
@@ -111,12 +109,12 @@ public class Jugador implements Serializable {
         this.posicion = posicion;
     }
 
-    public Equipo getEquipo () {
-        return equipo ;
+    public Equipo getEquipo() {
+        return equipo;
     }
 
-    public void setEquipo (Equipo equipo) {
-        this.equipo  = equipo;
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 
     @Override

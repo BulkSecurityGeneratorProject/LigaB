@@ -6,16 +6,16 @@
             "home": "Accueil",
             "entities": {
                 "main": "Entités",
-                "jugador": "Jugador",
-                "entrenador": "Entrenador",
-                "estadio": "Estadio",
-                "liga": "Liga",
-                "equipo": "Equipo",
                 "arbitro": "Arbitro",
-                "temporada": "Temporada",
+                "entrenador": "Entrenador",
+                "equipo": "Equipo",
+                "estadio": "Estadio",
+                "estadisticas": "Estadisticas",
+                "jugador": "Jugador",
+                "liga": "Liga",
                 "partido": "Partido",
                 "socio": "Socio",
-                "estadisticas": "Estadisticas",
+                "temporada": "Temporada",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

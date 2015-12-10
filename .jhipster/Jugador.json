@@ -2,19 +2,10 @@
     "relationships": [
         {
             "relationshipId": 1,
-            "relationshipName": "juega",
+            "relationshipName": "equipo",
             "otherEntityName": "equipo",
             "relationshipType": "many-to-one",
             "otherEntityField": "nombre"
-        },
-        {
-            "relationshipId": 2,
-            "relationshipName": "equipo ",
-            "otherEntityName": "equipo",
-            "relationshipType": "one-to-one",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "capitan"
         }
     ],
     "fields": [

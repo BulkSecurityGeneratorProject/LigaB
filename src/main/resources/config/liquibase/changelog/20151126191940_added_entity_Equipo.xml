@@ -31,9 +31,6 @@
             <column name="estadio_id" type="bigint">
                 <constraints unique="true"/>
             </column>
-            <column name="jugador_id" type="bigint">
-                <constraints unique="true"/>
-            </column>
         </createTable>
         
         <addForeignKeyConstraint baseColumnNames="entrenador_id"
@@ -47,12 +44,6 @@
                                  constraintName="fk_equipo_estadio_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ESTADIO"/>
-
-        <addForeignKeyConstraint baseColumnNames="jugador_id"
-                                 baseTableName="EQUIPO"
-                                 constraintName="fk_equipo_jugador_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="JUGADOR"/>
 
     </changeSet>
 </databaseChangeLog>

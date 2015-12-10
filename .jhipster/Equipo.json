@@ -20,29 +20,20 @@
         },
         {
             "relationshipId": 3,
-            "relationshipName": "capitan",
-            "otherEntityName": "jugador",
-            "relationshipType": "one-to-one",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "equipo"
-        },
-        {
-            "relationshipId": 4,
             "relationshipName": "sociosAfiliados",
             "otherEntityName": "socio",
             "relationshipType": "many-to-many",
-            "otherEntityField": "nombre",
             "ownerSide": false,
             "otherEntityRelationshipName": "equiposAfiliados"
         },
         {
-            "relationshipId": 5,
+            "relationshipId": 4,
             "relationshipName": "temporadActual",
             "otherEntityName": "temporada",
             "relationshipType": "many-to-many",
-            "otherEntityField": "nombre",
+            "otherEntityField": "year",
             "ownerSide": false,
-            "otherEntityRelationshipName": "equiposAfiliados"
+            "otherEntityRelationshipName": "equiposActuales"
         }
 
     ],

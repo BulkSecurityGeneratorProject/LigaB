@@ -58,6 +58,14 @@
                     <span class="form-control-static">{{jugador.posicion}}</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.jugador.equipo">equipo</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="equipo.detail({id:jugador.equipo.id})">{{jugador.equipo.nombre}}</a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -47,7 +47,6 @@
                     <th translate="ligabasquetApp.equipo.fechaCreacion">FechaCreacion</th>
                     <th translate="ligabasquetApp.equipo.entrenador">entrenador</th>
                     <th translate="ligabasquetApp.equipo.estadio">estadio</th>
-                    <th translate="ligabasquetApp.equipo.jugador">jugador</th>
                     <th></th>
                 </tr>
             </thead>
@@ -62,9 +61,6 @@
                     </td>
                     <td>
                         <a ui-sref="estadio.detail({id:equipo.estadio.id})">{{equipo.estadio.nombre}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="jugador.detail({id:equipo.jugador.id})">{{equipo.jugador.name}}</a>
                     </td>
                     <td>
                         <button type="submit"

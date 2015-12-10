@@ -17,7 +17,6 @@
             "fechaCreacion": "FechaCreacion",
             "entrenador": "Entrenador",
             "estadio": "Estadio",
-            "jugador": "Jugador",
             "sociosAfiliados": "SociosAfiliados",
             "temporadActual": "TemporadActual"
         }

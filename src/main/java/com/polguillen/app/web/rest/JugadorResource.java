@@ -19,8 +19,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing Jugador.
@@ -78,16 +76,8 @@ public class JugadorResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Jugador>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
-                                  @RequestParam(value = "per_page", required = false) Integer limit, @RequestParam(required = false) String filter)
+                                  @RequestParam(value = "per_page", required = false) Integer limit)
         throws URISyntaxException {
-        if ("equipo -is-null".equals(filter)) {
-            log.debug("REST request to get all Jugadors where equipo  is null");
-            return new ResponseEntity<>(StreamSupport
-                .stream(jugadorRepository.findAll().spliterator(), false)
-                .filter(jugador -> jugador.getEquipo () == null)
-                .collect(Collectors.toList()), HttpStatus.OK);
-        }
-        
         Page<Jugador> page = jugadorRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/jugadors", offset, limit);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
