@@ -1,0 +1,55 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "juega",
+            "otherEntityName": "equipo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "equipo ",
+            "otherEntityName": "equipo",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "capitan"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "canastas",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "asistencias",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "rebotes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "posicion",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151126185441",
+    "dto": "no",
+    "pagination": "pagination"
+}

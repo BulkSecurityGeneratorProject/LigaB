@@ -1,0 +1,59 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "jugadorEstadisticas",
+            "otherEntityName": "jugador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "partidoEstadisticas",
+            "otherEntityName": "partido",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "canastas",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "0"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "faltas",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "0"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "asistencias",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "0"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "rebotes",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        }
+    ],
+    "changelogDate": "20151203190246",
+    "dto": "no",
+    "pagination": "pagination"
+}

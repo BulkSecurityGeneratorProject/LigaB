@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="ligabasquetApp.arbitro.detail.title">Arbitro</span> {{arbitro.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.arbitro.nombre">Nombre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{arbitro.nombre}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.arbitro.edad">Edad</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{arbitro.edad}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.arbitro.liga">liga</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="liga.detail({id:arbitro.liga.id})">{{arbitro.liga.nombre}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,24 @@
+{
+    "ligabasquetApp": {
+        "estadisticas" : {
+            "home": {
+                "title": "Estadisticass",
+                "createLabel": "Créer un nouveau Estadisticas",
+                "createOrEditLabel": "Créer ou éditer un Estadisticas"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Estadisticas {{ id }} ?"
+            },
+            "detail": {
+                "title": "Estadisticas"
+            },
+            "canastas": "Canastas",
+            "faltas": "Faltas",
+            "asistencias": "Asistencias",
+            "rebotes": "Rebotes",
+            "jugadorEstadisticas": "JugadorEstadisticas",
+            "partidoEstadisticas": "PartidoEstadisticas"
+        }
+    }
+}
+

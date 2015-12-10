@@ -1,0 +1,21 @@
+{
+    "ligabasquetApp": {
+        "arbitro" : {
+            "home": {
+                "title": "Arbitros",
+                "createLabel": "Créer un nouveau Arbitro",
+                "createOrEditLabel": "Créer ou éditer un Arbitro"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Arbitro {{ id }} ?"
+            },
+            "detail": {
+                "title": "Arbitro"
+            },
+            "nombre": "Nombre",
+            "edad": "Edad",
+            "liga": "Liga"
+        }
+    }
+}
+

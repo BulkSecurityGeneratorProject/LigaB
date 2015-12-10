@@ -1,0 +1,72 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "temporada",
+            "otherEntityName": "temporada",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "year"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "equipoLocal",
+            "otherEntityName": "equipo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "equipoVisitante",
+            "otherEntityName": "equipo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "arbitro",
+            "otherEntityName": "arbitro",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+
+        {
+            "fieldId": 1,
+            "fieldName": "horaInicio",
+            "fieldType": "DateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "horaFinal",
+            "fieldType": "DateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "puntosLocal",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin":"0"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "puntosVisitantes",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin":"0"
+        }
+    ],
+    "changelogDate": "20151202154826",
+    "dto": "no",
+    "pagination": "pagination"
+}

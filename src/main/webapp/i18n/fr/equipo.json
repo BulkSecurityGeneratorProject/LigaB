@@ -1,0 +1,26 @@
+{
+    "ligabasquetApp": {
+        "equipo" : {
+            "home": {
+                "title": "Equipos",
+                "createLabel": "Créer un nouveau Equipo",
+                "createOrEditLabel": "Créer ou éditer un Equipo"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Equipo {{ id }} ?"
+            },
+            "detail": {
+                "title": "Equipo"
+            },
+            "nombre": "Nombre",
+            "localidad": "Localidad",
+            "fechaCreacion": "FechaCreacion",
+            "entrenador": "Entrenador",
+            "estadio": "Estadio",
+            "jugador": "Jugador",
+            "sociosAfiliados": "SociosAfiliados",
+            "temporadActual": "TemporadActual"
+        }
+    }
+}
+

@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="ligabasquetApp.equipo.detail.title">Equipo</span> {{equipo.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.nombre">Nombre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{equipo.nombre}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.localidad">Localidad</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{equipo.localidad}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.fechaCreacion">FechaCreacion</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{equipo.fechaCreacion}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.entrenador">entrenador</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="entrenador.detail({id:equipo.entrenador.id})">{{equipo.entrenador.nombre}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.estadio">estadio</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="estadio.detail({id:equipo.estadio.id})">{{equipo.estadio.nombre}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="ligabasquetApp.equipo.jugador">jugador</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="jugador.detail({id:equipo.jugador.id})">{{equipo.jugador.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

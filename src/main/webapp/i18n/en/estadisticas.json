@@ -1,0 +1,26 @@
+{
+    "ligabasquetApp": {
+        "estadisticas" : {
+            "home": {
+                "title": "Estadisticass",
+                "createLabel": "Create a new Estadisticas",
+                "createOrEditLabel": "Create or edit a Estadisticas"
+            },
+            "created": "A new Estadisticas is created with identifier {{ param }}",
+            "updated": "A Estadisticas is updated with identifier {{ param }}",
+            "deleted": "A Estadisticas is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Estadisticas {{ id }}?"
+            },
+            "detail": {
+                "title": "Estadisticas"
+            },
+            "canastas": "Canastas",
+            "faltas": "Faltas",
+            "asistencias": "Asistencias",
+            "rebotes": "Rebotes",
+            "jugadorEstadisticas": "JugadorEstadisticas",
+            "partidoEstadisticas": "PartidoEstadisticas"
+        }
+    }
+}

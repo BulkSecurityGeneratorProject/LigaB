@@ -1,0 +1,69 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "entrenador",
+            "otherEntityName": "entrenador",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "nombre",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "equipo"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "estadio",
+            "otherEntityName": "estadio",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "nombre",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "equipo"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "capitan",
+            "otherEntityName": "jugador",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "equipo"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "sociosAfiliados",
+            "otherEntityName": "socio",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nombre",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "equiposAfiliados"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "temporadActual",
+            "otherEntityName": "temporada",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nombre",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "equiposAfiliados"
+        }
+
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "localidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "fechaCreacion",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20151126191940",
+    "dto": "no",
+    "pagination": "pagination"
+}

@@ -1,0 +1,24 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "localidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "capacidad",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20151126185821",
+    "dto": "no",
+    "pagination": "pagination"
+}

@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myJugadorLabel" translate="ligabasquetApp.jugador.home.createOrEditLabel">Create or edit a Jugador</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="jugador.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="jugador.name"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.birthDate" for="field_birthDate">BirthDate</label>
+            <input type="date" class="form-control" name="birthDate" id="field_birthDate"
+                    ng-model="jugador.birthDate"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.canastas" for="field_canastas">Canastas</label>
+            <input type="number" class="form-control" name="canastas" id="field_canastas"
+                    ng-model="jugador.canastas"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.asistencias" for="field_asistencias">Asistencias</label>
+            <input type="number" class="form-control" name="asistencias" id="field_asistencias"
+                    ng-model="jugador.asistencias"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.rebotes" for="field_rebotes">Rebotes</label>
+            <input type="number" class="form-control" name="rebotes" id="field_rebotes"
+                    ng-model="jugador.rebotes"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="ligabasquetApp.jugador.posicion" for="field_posicion">Posicion</label>
+            <input type="text" class="form-control" name="posicion" id="field_posicion"
+                    ng-model="jugador.posicion"
+                    >
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

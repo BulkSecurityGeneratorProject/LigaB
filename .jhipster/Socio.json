@@ -1,0 +1,36 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "equiposAfiliados",
+            "otherEntityName": "equipo",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nombre",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "sociosAfiliados"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "asiento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20151202161945",
+    "dto": "no",
+    "pagination": "pagination"
+}
