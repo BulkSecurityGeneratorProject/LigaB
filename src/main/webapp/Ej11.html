@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table, td  {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+    <table>
+        <tr ng-repeat="x in myData">
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.name }}</td>
+            <td ng-if="$even">
+                {{ x.name }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.canastas }}</td>
+            <td ng-if="$even">
+                {{ x.canastas }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.asistencias }}</td>
+            <td ng-if="$even">
+                {{ x.asistencias }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.birthDate }}</td>
+            <td ng-if="$even">
+                {{ x.birthDate }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.equipo.nombre }}</td>
+            <td ng-if="$even">
+                {{ x.equipo.nombre }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.posicion }}</td>
+            <td ng-if="$even">
+                {{ x.posicion }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">
+                {{ x.rebotes }}</td>
+            <td ng-if="$even">
+                {{ x.rebotes }}</td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http) {
+        $http.get("api/jugadors").then(function (response) {
+            $scope.myData = response.data;
+        });
+    });
+</script>
+
+</body>
+</html>
