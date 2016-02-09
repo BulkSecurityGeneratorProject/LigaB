@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style>
+    input.ng-pristine {
+        background-color:transparent;
+    }
+    input.ng-dirty {
+        background-color:green;
+    }
+</style>
+<body ng-app="">
+
+
+<form name="myForm">
+    <p>Nombre:
+        <input type="text" name="myName" ng-model="myName" required>
+        <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">El nombre es obligatorio.</span>
+
+    </p>
+    <p>Canastas:
+        <input type="number" min="0" name="myCanastas" ng-model="myCanastas" required>
+        <span ng-show="myForm.myCanastas.$touched && myForm.myCanastas.$invalid">El minimo de canastas es 0.</span>
+    </p>
+    <p></p>Asistencias:
+        <input type="number" min="0" name="myAsistencias" ng-model="myAsistencias" required>
+        <span ng-show="myForm.myAsistencias.$touched && myForm.myAsistencias.$invalid">El minimo de canastas es 0.</span>
+    </p>
+    <p>Fecha de Nacimiento:
+        <input type="date" name="myBirthDate" ng-model="myBirthDate" required>
+        <span ng-show="myForm.myBirthDate.$touched && myForm.myBirthDate.$invalid" >La fecha de nacimiento es obligatoria.</span>
+    </p>
+    <p>Posicion:
+        <input type="text" name="myPosicion" ng-model="myPosicion" required>
+        <span ng-show="myForm.myPosicion.$touched && myForm.myPosicion.$invalid">La posicion es obligatoria.</span>
+    </p>
+    <p>Rebotes:
+        <input type="number" min="0" name="myRebotes" ng-model="myRebotes" required>
+        <span ng-show="myForm.myRebotes.$touched && myForm.myRebotes.$invalid">El minimo de rebotes es 0.</span>
+    </p>
+</form>
+
+</body>
+</html>

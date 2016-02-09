@@ -10,11 +10,20 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
-<div ng-app="myApp" ng-controller="customersCtrl" >
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+    <p>Any:<input type="text" ng-model="search.$"></p>
+    <p>Nombre:<input type="text" ng-model="search.name"></p>
+    <p>Canastas:<input type="text" ng-model="search.canastas"></p>
+    <p>Asistencias:<input type="text" ng-model="search.asistencias"></p>
+    <p>Fecha de nacimiento:<input type="text" ng-model="search.birthDate"></p>
+    <p>Equipo:<input type="text" ng-model="search.equipo.nombre"></p>
+    <p>Posicion:<input type="text" ng-model="search.posicion"></p>
+    <p>Rebotes:<input type="text" ng-model="search.rebotes"></p>
 
     <table>
-        <tr ng-repeat="x in myData"  ng-show="x.canastas > 50">
-            <td ng-if="$odd" style="background-color:#f1f1f1" >
+        <tr ng-repeat="x in myData | filter:search:strict" >
+            <td ng-if="$odd" style="background-color:#f1f1f1">
                 {{ x.name }}</td>
             <td ng-if="$even">
                 {{ x.name }}</td>
