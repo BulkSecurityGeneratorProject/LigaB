@@ -2,78 +2,246 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Title</title>
+
 </head>
 <body>
+<style>
+    .well {
+        box-shadow: 0px 11px 15px -10px rgba(0,0,0,.52);
+    }
+</style>
+<div ng-app="ligabasquetApp" ng-controller="creacionCtrl" ng-init="getAllJugadores()">
+    <br/>
+    <div class="container" ng-cloak>
+        <div class="well">
+            Jugadores: <select ng-model="selected" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value=""></option>
+            <option ng-repeat="jugador in allJugadores" value="{{jugador.id}}">{{jugador.name}}</option>
+        </select>
 
-<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+            <p></p>
+            <button class="btn btn-primary" ng-click="cargarJugador(selected); getAllJugadores()">
+                <span>Seleccionar Jugador</span>
+            </button>
+            <br/><br/>
 
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myJugadorLabel" translate="pruebaApp.jugador.home.createOrEditLabel">Create or edit a Jugador</h4>
-    </div>
-    <div class="modal-body">
-        <jh-alert-error></jh-alert-error>
-        <div class="form-group">
-            <label for="id" translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   ng-model="jugador.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.nombre" for="field_nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="field_nombre"
-                   ng-model="jugador.nombre"
-                   required />
-            <div ng-show="editForm.nombre.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.nombre.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.fechaNacimiento" for="field_fechaNacimiento">FechaNacimiento</label>
-            <input id="field_fechaNacimiento" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="jugador.fechaNacimiento" is-open="datePickerForFechaNacimiento.status.opened"
-                />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForFechaNacimientoOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.posicion" for="field_posicion">Posicion</label>
-            <input type="text" class="form-control" name="posicion" id="field_posicion"
-                   ng-model="jugador.posicion"
-                />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.canastasTotales" for="field_canastasTotales">CanastasTotales</label>
-            <input type="number" class="form-control" name="canastasTotales" id="field_canastasTotales"
-                   ng-model="jugador.canastasTotales"
-                />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.asistenciasTotales" for="field_asistenciasTotales">AsistenciasTotales</label>
-            <input type="number" class="form-control" name="asistenciasTotales" id="field_asistenciasTotales"
-                   ng-model="jugador.asistenciasTotales"
-                />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="pruebaApp.jugador.rebotesTotales" for="field_rebotesTotales">RebotesTotales</label>
-            <input type="number" class="form-control" name="rebotesTotales" id="field_rebotesTotales"
-                   ng-model="jugador.rebotesTotales"
-                />
-        </div>
+            <form name="formJugador" ng-submit="update()">
+                Id: <input ng-model="jugadorSel.id" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" disabled/>
 
+                Nombre: <input type="text" name="nombre" ng-model="jugadorSel.nombre" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required/>
+
+                Posicion: <input type="text" name="posicion" ng-model="jugadorSel.posicion" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required/>
+
+                Canastas: <input type="number" name="canastasTotales" ng-model="jugadorSel.canastasTotales" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required/>
+
+                Asistencias: <input type="number" name="asistenciasTotales" ng-model="jugadorSel.asistenciasTotales" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required/>
+
+                Rebotes: <input type="number" name="rebotesTotales" ng-model="jugadorSel.rebotesTotales" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required/>
+
+                Equipo: <select class="form-control" id="field_equipo" name="equipo" ng-model="jugadorSel.equipo" ng-options="equipo as equipo.nombre for equipo in equipos track by equipo.id">
+                <option value=""></option>
+            </select>
+
+                <br/>
+                <button type="submit" ng-disabled="formJugador.$invalid || isSaving" class="btn btn-primary">
+                    <span>Save</span>
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-        </button>
-    </div>
-</form>
+</div>
+
+
+
+<script src="bower_components/modernizr/modernizr.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/messageformat/messageformat.js"></script>
+<script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+<script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+
+
+
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/app.constants.js"></script>
+<script src="scripts/components/auth/auth.service.js"></script>
+<script src="scripts/components/auth/principal.service.js"></script>
+<script src="scripts/components/auth/authority.directive.js"></script>
+<script src="scripts/components/auth/services/account.service.js"></script>
+<script src="scripts/components/auth/services/activate.service.js"></script>
+<script src="scripts/components/auth/services/password.service.js"></script>
+<script src="scripts/components/auth/services/register.service.js"></script>
+<script src="scripts/components/form/form.directive.js"></script>
+<script src="scripts/components/form/maxbytes.directive.js"></script>
+<script src="scripts/components/form/minbytes.directive.js"></script>
+<script src="scripts/components/form/pager.directive.js"></script>
+<script src="scripts/components/form/pagination.directive.js"></script>
+<script src="scripts/components/admin/audits.service.js"></script>
+<script src="scripts/components/admin/logs.service.js"></script>
+<script src="scripts/components/admin/configuration.service.js"></script>
+<script src="scripts/components/admin/monitoring.service.js"></script>
+<script src="scripts/components/interceptor/auth.interceptor.js"></script>
+<script src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
+<script src="scripts/components/interceptor/notification.interceptor.js"></script>
+<script src="scripts/components/navbar/navbar.directive.js"></script>
+<script src="scripts/components/navbar/navbar.controller.js"></script>
+<script src="scripts/components/user/user.service.js"></script>
+<script src="scripts/components/util/truncate.filter.js"></script>
+<script src="scripts/components/util/base64.service.js"></script>
+<script src="scripts/components/alert/alert.service.js"></script>
+<script src="scripts/components/alert/alert.directive.js"></script>
+<script src="scripts/components/util/parse-links.service.js"></script>
+<script src="scripts/components/util/dateutil.service.js"></script>
+<script src="scripts/app/account/account.js"></script>
+<script src="scripts/app/account/activate/activate.js"></script>
+<script src="scripts/app/account/activate/activate.controller.js"></script>
+<script src="scripts/app/account/login/login.js"></script>
+<script src="scripts/app/account/login/login.controller.js"></script>
+<script src="scripts/app/account/logout/logout.js"></script>
+<script src="scripts/app/account/logout/logout.controller.js"></script>
+<script src="scripts/app/account/password/password.js"></script>
+<script src="scripts/app/account/password/password.controller.js"></script>
+<script src="scripts/app/account/password/password.directive.js"></script>
+<script src="scripts/app/account/register/register.js"></script>
+<script src="scripts/app/account/register/register.controller.js"></script>
+<script src="scripts/app/account/settings/settings.js"></script>
+<script src="scripts/app/account/settings/settings.controller.js"></script>
+<script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+<script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+<script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+<script src="scripts/app/account/reset/request/reset.request.js"></script>
+<script src="scripts/app/admin/admin.js"></script>
+<script src="scripts/app/admin/audits/audits.js"></script>
+<script src="scripts/app/admin/audits/audits.controller.js"></script>
+<script src="scripts/app/admin/configuration/configuration.js"></script>
+<script src="scripts/app/admin/configuration/configuration.controller.js"></script>
+<script src="scripts/app/admin/docs/docs.js"></script>
+<script src="scripts/app/admin/health/health.js"></script>
+<script src="scripts/app/admin/health/health.controller.js"></script>
+<script src="scripts/app/admin/health/health.modal.controller.js"></script>
+<script src="scripts/app/admin/logs/logs.js"></script>
+<script src="scripts/app/admin/logs/logs.controller.js"></script>
+<script src="scripts/app/admin/metrics/metrics.js"></script>
+<script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+<script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+<script src="scripts/app/entities/entity.js"></script>
+<script src="scripts/app/error/error.js"></script>
+<script src="scripts/app/main/main.js"></script>
+<script src="scripts/app/main/main.controller.js"></script>
+<script src="bower_components/messageformat/locale/en.js"></script>
+<script src="bower_components/messageformat/locale/fr.js"></script>
+<script src="scripts/components/language/language.service.js"></script>
+<script src="scripts/components/language/language.controller.js"></script>
+<script src="scripts/components/auth/services/sessions.service.js"></script>
+<script src="scripts/components/auth/provider/auth.session.service.js"></script>
+<script src="scripts/app/account/sessions/sessions.js"></script>
+<script src="scripts/app/account/sessions/sessions.controller.js"></script>
+<script src="scripts/app/entities/arbitro/arbitro.js"></script>
+<script src="scripts/app/entities/arbitro/arbitro.controller.js"></script>
+<script src="scripts/app/entities/arbitro/arbitro-dialog.controller.js"></script>
+<script src="scripts/app/entities/arbitro/arbitro-detail.controller.js"></script>
+<script src="scripts/components/entities/arbitro/arbitro.service.js"></script>
+<script src="scripts/app/entities/entrenador/entrenador.js"></script>
+<script src="scripts/app/entities/entrenador/entrenador.controller.js"></script>
+<script src="scripts/app/entities/entrenador/entrenador-dialog.controller.js"></script>
+<script src="scripts/app/entities/entrenador/entrenador-detail.controller.js"></script>
+<script src="scripts/components/entities/entrenador/entrenador.service.js"></script>
+<script src="scripts/app/entities/equipo/equipo.js"></script>
+<script src="scripts/app/entities/equipo/equipo.controller.js"></script>
+<script src="scripts/app/entities/equipo/equipo-dialog.controller.js"></script>
+<script src="scripts/app/entities/equipo/equipo-detail.controller.js"></script>
+<script src="scripts/components/entities/equipo/equipo.service.js"></script>
+<script src="scripts/app/entities/estadio/estadio.js"></script>
+<script src="scripts/app/entities/estadio/estadio.controller.js"></script>
+<script src="scripts/app/entities/estadio/estadio-dialog.controller.js"></script>
+<script src="scripts/app/entities/estadio/estadio-detail.controller.js"></script>
+<script src="scripts/components/entities/estadio/estadio.service.js"></script>
+<script src="scripts/app/entities/estadisticas/estadisticas.js"></script>
+<script src="scripts/app/entities/estadisticas/estadisticas.controller.js"></script>
+<script src="scripts/app/entities/estadisticas/estadisticas-dialog.controller.js"></script>
+<script src="scripts/app/entities/estadisticas/estadisticas-detail.controller.js"></script>
+<script src="scripts/components/entities/estadisticas/estadisticas.service.js"></script>
+<script src="scripts/app/entities/jugador/jugador.js"></script>
+<script src="scripts/app/entities/jugador/jugador.controller.js"></script>
+<script src="scripts/app/entities/jugador/jugador-dialog.controller.js"></script>
+<script src="scripts/app/entities/jugador/jugador-detail.controller.js"></script>
+<script src="scripts/components/entities/jugador/jugador.service.js"></script>
+<script src="scripts/app/entities/liga/liga.js"></script>
+<script src="scripts/app/entities/liga/liga.controller.js"></script>
+<script src="scripts/app/entities/liga/liga-dialog.controller.js"></script>
+<script src="scripts/app/entities/liga/liga-detail.controller.js"></script>
+<script src="scripts/components/entities/liga/liga.service.js"></script>
+<script src="scripts/app/entities/partido/partido.js"></script>
+<script src="scripts/app/entities/partido/partido.controller.js"></script>
+<script src="scripts/app/entities/partido/partido-dialog.controller.js"></script>
+<script src="scripts/app/entities/partido/partido-detail.controller.js"></script>
+<script src="scripts/components/entities/partido/partido.service.js"></script>
+<script src="scripts/app/entities/socio/socio.js"></script>
+<script src="scripts/app/entities/socio/socio.controller.js"></script>
+<script src="scripts/app/entities/socio/socio-dialog.controller.js"></script>
+<script src="scripts/app/entities/socio/socio-detail.controller.js"></script>
+<script src="scripts/components/entities/socio/socio.service.js"></script>
+<script src="scripts/app/entities/temporada/temporada.js"></script>
+<script src="scripts/app/entities/temporada/temporada.controller.js"></script>
+<script src="scripts/app/entities/temporada/temporada-dialog.controller.js"></script>
+<script src="scripts/app/entities/temporada/temporada-detail.controller.js"></script>
+<script src="scripts/components/entities/temporada/temporada.service.js"></script>
+
+
+<script>
+    var app = angular.module('ligaBaloncestoApp');
+    app.controller('creacionCtrl', function($scope, Jugador, Equipo) {
+        $scope.allJugadores;
+        $scope.jugadorSel;
+        $scope.equipos = Equipo.query();
+        $scope.getAllJugadores = function(){
+            $scope.allJugadores = Jugador.query();
+        };
+        $scope.cargarJugador = function(id){
+            Jugador.get({id: id},function(result){
+                $scope.jugadorSel = result;
+            });
+        };
+        $scope.update = function(){
+            Jugador.update($scope.jugadorSel, updateOK);
+        };
+        var updateOK = function(){
+            $scope.getAllJugadores();
+        }
+    });
+    app.factory("Jugador",function($resource){
+        return $resource('api/jugadors/:id', {}, {
+            'query': { method: 'GET', isArray: true},
+            'get': {
+                method: 'GET',
+                transformResponse: function (data) {
+                    data = angular.fromJson(data);
+                    return data;
+                }
+            },
+            'update': {
+                method: 'PUT',
+                transformRequest: function (data) {
+                    return angular.toJson(data);
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
